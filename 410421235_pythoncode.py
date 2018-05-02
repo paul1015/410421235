@@ -29,5 +29,13 @@ while (epoch <= maxlimit):
         print(w)
     epoch = epoch + 1
 
+I = np.asarray(dataI).copy()
+we, h = dataI.size
+print(we,h)
+for k in range(h):
+    for j in range(we):
+        I[k][j] = (dataEprime.getpixel((j,k)) - datakey1.getpixel((j,k))*w[0] - datakey2.getpixel((j,k))*w[1]) / w[2]
+print(I)
+im.imwrite('finalpicture.jpg', I)
 
 
