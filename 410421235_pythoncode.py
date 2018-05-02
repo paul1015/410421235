@@ -17,3 +17,17 @@ for i in range(h):
         data[i*400+j][2] = dataI.getpixel((j,i))
         e[i*400+j] = dataEprime.getpixel((j,i))
 
+w = np.array([0,0,0])
+epoch = 1
+maxlimit = 5
+a = 0.00001
+while (epoch <= maxlimit):
+    for i,x in enumerate(data):
+        ak = w[0]*x[0] + w[1]*x[1] + w[2] * x[2]
+        ek = e[i] - ak
+        w = w + a * ek * x
+        print(w)
+    epoch = epoch + 1
+
+
+
